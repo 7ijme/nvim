@@ -68,4 +68,15 @@ use({
 
 use 'gko/vim-coloresque'
 
+use {
+  'gelguy/wilder.nvim',
+  config = function()
+    -- config goes here
+  end,
+}
+
+use 'ryanoasis/vim-devicons'
+
+use 'romgrk/fzy-lua-native'
+
 end)

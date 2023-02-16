@@ -1,6 +1,5 @@
 
 function ColorMyPencils(color) 
-	color = color or "deep-space"
 	color = color or "onedark"
 	vim.cmd.colorscheme(color)
 
