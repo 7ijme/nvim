@@ -52,4 +52,18 @@ return require('packer').startup(function(use)
     {'rafamadriz/friendly-snippets'}, -- Optional
   }
 }
+
+use 'mfussenegger/nvim-dap'
+
+use 'prettier/vim-prettier'
+
+use 'neoclide/npm.nvim'
+
+use 'Shougo/denite.nvim'
+
+use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+})
+
 end)
