@@ -66,4 +66,6 @@ use({
     run = function() vim.fn["mkdp#util#install"]() end,
 })
 
+use 'gko/vim-coloresque'
+
 end)
