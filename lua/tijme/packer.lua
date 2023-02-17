@@ -75,8 +75,10 @@ use {
   end,
 }
 
-use 'ryanoasis/vim-devicons'
+use 'nvim-tree/nvim-web-devicons'
 
 use 'romgrk/fzy-lua-native'
+
+use 'prichrd/netrw.nvim'
 
 end)
