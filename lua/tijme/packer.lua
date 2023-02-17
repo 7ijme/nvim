@@ -54,6 +54,11 @@ return require('packer').startup(function(use)
 }
 
 use 'mfussenegger/nvim-dap'
+use({
+  "mfussenegger/nvim-jdtls",
+  module = "jdtls",
+  ft = "java" ,
+})
 
 use 'prettier/vim-prettier'
 
@@ -80,5 +85,7 @@ use 'nvim-tree/nvim-web-devicons'
 use 'romgrk/fzy-lua-native'
 
 use 'prichrd/netrw.nvim'
+
+use 'nvim-lualine/lualine.nvim'
 
 end)
