@@ -45,15 +45,4 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
-function SaveIfModifieable()
-	print(vim.bo.modifiable)
-  if vim.bo.modifiable then
-	vim.cmd('write')
-  end
-end
-
-
-vim.cmd('autocmd InsertLeave <buffer> lua SaveIfModifieable()')
-
-
 
