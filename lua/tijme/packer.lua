@@ -91,6 +91,4 @@ use 'nvim-lualine/lualine.nvim'
 
 --use "Pocco81/auto-save.nvim"
 
-
-use 'edluffy/hologram.nvim'
 end)
