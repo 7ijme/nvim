@@ -59,7 +59,7 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<F2>", function() vim.lsp.buf.rename() end, opts)
 	-- show suggestions on ctrl Space
 
-	vim.keymap.set("i", "<leader>h", function() vim.lsp.buf.signature_help() end, opts)
+	--vim.keymap.set("i", "<leader>h", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
 lsp.setup()

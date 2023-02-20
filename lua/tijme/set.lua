@@ -29,24 +29,4 @@ vim.opt.scrolloff = 8
 --vim.opt.updatetime = 50
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+vim.cmd("autocmd InsertLeave * if &readonly == 0 && filereadable(bufname('%')) | silent update | endif")
