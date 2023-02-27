@@ -103,4 +103,6 @@ use {
   end
 }
 
+use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
+
 end)
