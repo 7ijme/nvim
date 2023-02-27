@@ -105,4 +105,8 @@ use {
 
 use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
 
+use 'wakatime/vim-wakatime'
+
+use 'Raimondi/delimitMate'
+
 end)
