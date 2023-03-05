@@ -1,5 +1,7 @@
 vim.g.mapleader = " "
 
+vim.keymap.set("n",  "<F8>", ":w <CR> :!gcc % -o %< && %<.exe <CR>")
+
 vim.keymap.set("n", "<C-Left>", "<C-w>h")
 vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-Right>", "<C-w>l")

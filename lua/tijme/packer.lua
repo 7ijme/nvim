@@ -61,7 +61,8 @@ use({
   ft = "java" ,
 })
 
-use 'prettier/vim-prettier'
+--use 'prettier/vim-prettier'
+use 'sbdchd/neoformat'
 
 use 'neoclide/npm.nvim'
 
@@ -108,5 +109,7 @@ use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
 use 'wakatime/vim-wakatime'
 
 use 'Raimondi/delimitMate'
+
+use({ "wesleimp/stylua.nvim" })
 
 end)
