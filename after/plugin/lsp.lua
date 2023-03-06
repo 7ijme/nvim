@@ -100,4 +100,24 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 	float = true,
 })
 
+--[[
+local root_files = {
+	"settings.gradle", -- Gradle (multi-project)
+	"settings.gradle.kts", -- Gradle (multi-project)
+	"build.xml", -- Ant
+	"pom.xml", -- Maven
+	"package.json", -- npm"
+}
+
+local fallback_root_files = {
+	"build.gradle", -- Gradle
+	"build.gradle.kts", -- Gradle
+}
+root_dir = function(fname)
+	local primary = util.root_pattern(unpack(root_files))(fname)
+	local fallback = util.root_pattern(unpack(fallback_root_files))(fname)
+	return primary or fallback
+end
+]]
+--
 lsp.setup()
