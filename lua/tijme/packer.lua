@@ -7,6 +7,7 @@ return require("packer").startup(function(use)
 	-- Packer can manage itself
 	use("wbthomason/packer.nvim")
 
+	-- Searcher
 	use({
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.1",
@@ -20,6 +21,7 @@ return require("packer").startup(function(use)
 		},
 	})
 
+	-- Themes
 	use("tyrannicaltoucan/vim-deep-space")
 	use("joshdick/onedark.vim")
 
@@ -32,12 +34,22 @@ return require("packer").startup(function(use)
 	--	  end
 	--})
 
+	-- Highlighting
 	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
+	use("nvim-treesitter/nvim-treesitter-context")
 	use("nvim-treesitter/playground")
+
+	-- Quick file move
 	use("theprimeagen/harpoon")
+
+	-- Project changes
 	use("mbbill/undotree")
+
+	-- Git
 	use("tpope/vim-fugitive")
 	use("mhinz/vim-signify")
+
+	-- LSP
 	use({
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v1.x",
@@ -60,7 +72,6 @@ return require("packer").startup(function(use)
 			{ "rafamadriz/friendly-snippets" }, -- Optional
 		},
 	})
-
 	use("mfussenegger/nvim-dap")
 	use({
 		"mfussenegger/nvim-jdtls",
@@ -73,8 +84,10 @@ return require("packer").startup(function(use)
 
 	use("neoclide/npm.nvim")
 
+	-- no idea what this does
 	use("Shougo/denite.nvim")
 
+	-- doesnt work iirc
 	use({
 		"iamcco/markdown-preview.nvim",
 		run = function()
@@ -82,8 +95,10 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	-- color highlighting
 	use("gko/vim-coloresque")
 
+	-- better commands
 	use({
 		"gelguy/wilder.nvim",
 		config = function()
@@ -93,14 +108,18 @@ return require("packer").startup(function(use)
 
 	use("nvim-tree/nvim-web-devicons")
 
+	-- fuzzy finder
 	use("romgrk/fzy-lua-native")
 
+	-- better file eplorer
 	use("prichrd/netrw.nvim")
 
+	-- better statusline
 	use("nvim-lualine/lualine.nvim")
 
 	--use "Pocco81/auto-save.nvim"
 
+	-- error tab
 	use({
 		"folke/trouble.nvim",
 		requires = "nvim-tree/nvim-web-devicons",
@@ -113,11 +132,37 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	-- better bufferline
 	use({ "romgrk/barbar.nvim", requires = "nvim-web-devicons" })
 
+	-- show how long i have been coding
 	use("wakatime/vim-wakatime")
 
+	-- auto close brackets
 	use("Raimondi/delimitMate")
 
+	-- formatter
 	use({ "wesleimp/stylua.nvim" })
+
+	-- better commenting
+	use({
+		"folke/todo-comments.nvim",
+		requires = "nvim-lua/plenary.nvim",
+		config = function()
+			require("todo-comments").setup({
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			})
+		end,
+	})
+
+	-- learn vim
+	use("takac/vim-hardtime")
+
+	-- search (f) highlighting
+	use("unblevable/quick-scope")
+
+	-- signatures (for lsp)
+	use("ray-x/lsp_signature.nvim")
 end)

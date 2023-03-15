@@ -120,4 +120,9 @@ root_dir = function(fname)
 end
 ]]
 --
+
+lsp.setup("rust_analyzer", {
+	cmd = { "C:\\Users\\tijme\\AppData\\Local\\nvim-data\\mason\\packages\\rust-analyzer\\rust-analyzer.exe" },
+})
+
 lsp.setup()

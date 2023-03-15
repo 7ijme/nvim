@@ -28,12 +28,16 @@ vim.opt.scrolloff = 8
 
 --vim.opt.updatetime = 50
 
-vim.cmd(
-	"autocmd InsertLeave * if &readonly == 0 && filereadable(bufname('%')) | silent Neoformat | silent update | endif"
-)
-vim.cmd("autocmd BufWritePre * undojoin | silent Neoformat")
+vim.cmd("autocmd InsertLeave * if &readonly == 0 && filereadable(bufname('%')) | silent update | endif")
+
+--vim.cmd("autocmd BufWritePre * undojoin | silent Neoformat")
+-- create keybind to format code
+vim.keymap.set("n", "<C-f>", ":Neoformat<CR> | silent update", { noremap = true, silent = true })
 
 vim.cmd("autocmd FileType * set formatoptions-=cro")
+
+-- save file once created
+vim.cmd("autocmd BufNewFile * silent! write")
 
 function MultipleEdit(p_list)
 	for _, p in ipairs(p_list) do
