@@ -32,7 +32,7 @@ vim.cmd("autocmd InsertLeave * if &readonly == 0 && filereadable(bufname('%')) |
 
 --vim.cmd("autocmd BufWritePre * undojoin | silent Neoformat")
 -- create keybind to format code
-vim.keymap.set("n", "<C-f>", ":Neoformat<CR> | silent update", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-f>", ":Neoformat<CR> | :update<CR>", { noremap = true, silent = true })
 
 vim.cmd("autocmd FileType * set formatoptions-=cro")
 
