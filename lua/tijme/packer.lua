@@ -17,13 +17,18 @@ return require("packer").startup(function(use)
 				"nvim-lua/plenary.nvim",
 				"nvim-telescope/telescope-project.nvim",
 				"nvim-telescope/telescope-file-browser.nvim",
+				--"nvim-telescope/telescope-ui-select.nvim"
 			},
 		},
 	})
 
+	-- insert & code actions UI
+	use({ "stevearc/dressing.nvim" })
+
 	-- Themes
 	use("tyrannicaltoucan/vim-deep-space")
-	use("joshdick/onedark.vim")
+	--use("joshdick/onedark.vim")
+	use("navarasu/onedark.nvim")
 
 	--  use({
 	--	  'rose-pine/neovim',
@@ -47,7 +52,8 @@ return require("packer").startup(function(use)
 
 	-- Git
 	use("tpope/vim-fugitive")
-	use("mhinz/vim-signify")
+	--use("mhinz/vim-signify")
+	use("lewis6991/gitsigns.nvim")
 
 	-- LSP
 	use({
@@ -84,21 +90,10 @@ return require("packer").startup(function(use)
 
 	use("neoclide/npm.nvim")
 
-	-- no idea what this does
-	use("Shougo/denite.nvim")
-
-	-- doesnt work iirc
-	use({
-		"iamcco/markdown-preview.nvim",
-		run = function()
-			vim.fn["mkdp#util#install"]()
-		end,
-	})
-
 	-- color highlighting
 	use("gko/vim-coloresque")
 
-	-- better commands
+	-- better command highlighting
 	use({
 		"gelguy/wilder.nvim",
 		config = function()
@@ -139,7 +134,11 @@ return require("packer").startup(function(use)
 	use("wakatime/vim-wakatime")
 
 	-- auto close brackets
-	use("Raimondi/delimitMate")
+	--use("Raimondi/delimitMate")
+	--use("jiangmiao/auto-pairs")
+	--use("rstacruz/vim-closer")
+	--use("LunarWatcher/auto-pairs")
+	use("cohama/lexima.vim")
 
 	-- formatter
 	use({ "wesleimp/stylua.nvim" })
@@ -157,12 +156,42 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	-- learn vim
-	use("takac/vim-hardtime")
-
 	-- search (f) highlighting
 	use("unblevable/quick-scope")
 
 	-- signatures (for lsp)
 	use("ray-x/lsp_signature.nvim")
+
+	-- comment shortcuts
+	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	})
+
+	-- yeah useless fun bullshit
+	use("eandrju/cellular-automaton.nvim")
+
+	use("github/copilot.vim")
+
+	use({
+		"folke/zen-mode.nvim",
+		config = function()
+			require("zen-mode").setup({
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			})
+		end,
+	})
+
+	-- refactoring
+	use({
+		"ThePrimeagen/refactoring.nvim",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
+	})
 end)

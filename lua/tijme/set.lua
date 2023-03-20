@@ -1,5 +1,5 @@
 --vim.opt.guicursor = ""
-
+-- on neovim start press j and enter
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -28,7 +28,7 @@ vim.opt.scrolloff = 8
 
 --vim.opt.updatetime = 50
 
-vim.cmd("autocmd InsertLeave * if &readonly == 0 && filereadable(bufname('%')) | silent update | endif")
+vim.cmd("autocmd InsertLeave * if &readonly == 0 && filereadable(bufname('%')) | write | endif")
 
 --vim.cmd("autocmd BufWritePre * undojoin | silent Neoformat")
 -- create keybind to format code
@@ -57,3 +57,20 @@ function EditMultipleFiles(...)
 end
 
 vim.cmd("command! -bar -bang -nargs=+ -complete=file Edit call v:lua.EditMultipleFiles(<f-args>)")
+
+vim.g.AutoPairsCenterLine = 0
+--vim.g.AutoPairsFlyMode = 1
+
+vim.cmd[[function! IndentWithI()
+    if len(getline('.')) == 0
+        return "\"_cc"
+    else
+        return "i"
+    endif
+endfunction
+
+nnoremap <expr> i IndentWithI()]]
+-- done
+
+-- set env variable $env:TERM_PROGRAM = "nvim"
+vim.cmd("let $TERM_PROGRAM = 'nvim'")
