@@ -3,8 +3,6 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
-
-
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -16,7 +14,9 @@ vim.opt.wrap = false
 
 --vim.opt.swapfile = false
 --vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+if vim.loop.os_uname().sysname == "Linux" then
+	vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+end
 --vim.opt.undofile = true
 
 vim.opt.hlsearch = false
@@ -63,7 +63,7 @@ vim.cmd("command! -bar -bang -nargs=+ -complete=file Edit call v:lua.EditMultipl
 vim.g.AutoPairsCenterLine = 0
 --vim.g.AutoPairsFlyMode = 1
 
-vim.cmd[[function! IndentWithI()
+vim.cmd([[function! IndentWithI()
     if len(getline('.')) == 0
         return "\"_cc"
     else
@@ -71,7 +71,7 @@ vim.cmd[[function! IndentWithI()
     endif
 endfunction
 
-nnoremap <expr> i IndentWithI()]]
+nnoremap <expr> i IndentWithI()]])
 -- done
 
 -- set env variable $env:TERM_PROGRAM = "nvim"
