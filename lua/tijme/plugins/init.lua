@@ -1,6 +1,14 @@
 return {
 	-- Highlighting
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				auto_install = true,
+			})
+		end,
+	},
 	"nvim-treesitter/nvim-treesitter-context",
 
 	-- Git
@@ -39,22 +47,14 @@ return {
 		"folke/trouble.nvim",
 		dependencies = "nvim-tree/nvim-web-devicons",
 		config = function()
-			require("trouble").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
+			require("trouble").setup({})
 		end,
 	},
 
 	-- show how long i have been coding
 	"wakatime/vim-wakatime",
 
-	-- auto close brackets
-	--"Raimondi/delimitMate",
-	--"jiangmiao/auto-pairs",
-	--"rstacruz/vim-closer",
-	--"LunarWatcher/auto-pairs",
+	-- Auto bracket pairs
 	"cohama/lexima.vim",
 
 	-- formatter
@@ -65,11 +65,7 @@ return {
 		"folke/todo-comments.nvim",
 		dependencies = "nvim-lua/plenary.nvim",
 		config = function()
-			require("todo-comments").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
+			require("todo-comments").setup({})
 		end,
 	},
 
@@ -93,21 +89,4 @@ return {
 
 	"nvim-telescope/telescope-media-files.nvim",
 	"nvim-lua/popup.nvim",
-
-	--[[ use({
-		"folke/noice.nvim",
-		config = function()
-			require("noice").setup({
-				-- add any options here
-			})
-		end,
-		dependencies = {
-			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-			"MunifTanjim/nui.nvim",
-			-- OPTIONAL:
-			--   `nvim-notify` is only needed, if you want to use the notification view.
-			--   If not available, we use `mini` as the fallback
-			"rcarriga/nvim-notify",
-		},
-	}) ]]
 }
