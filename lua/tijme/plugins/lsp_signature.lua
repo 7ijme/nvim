@@ -1,4 +1,8 @@
-local cfg = {
+return {
+	"ray-x/lsp_signature.nvim",
+
+	config = function ()
+		local cfg = {
 	floating_window_off_x = 5, -- adjust float windows x position.
 	floating_window_off_y = function() -- adjust float windows y position. e.g. set to -2 can make floating window move up 2 lines
 		local linenr = vim.api.nvim_win_get_cursor(0)[1] -- buf line number
@@ -19,3 +23,6 @@ local cfg = {
 	end,
 }
 require("lsp_signature").setup(cfg)
+
+	end
+}
