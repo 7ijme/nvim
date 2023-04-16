@@ -16,7 +16,12 @@ return {
 
 	-- Git
 	"tpope/vim-fugitive",
-	"lewis6991/gitsigns.nvim",
+	{
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup()
+		end,
+	},
 
 	-- Debugging
 	"mfussenegger/nvim-dap",
@@ -26,7 +31,6 @@ return {
 		ft = "java",
 	},
 
-	--use 'prettier/vim-prettier'
 	{ "sbdchd/neoformat", keys = {
 		{ "<C-f>", ":Neoformat<CR> | :update<CR>" },
 	} },
