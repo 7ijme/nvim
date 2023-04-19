@@ -105,4 +105,14 @@ return {
 
 	"christoomey/vim-tmux-navigator",
 
+	{
+		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		keys = {
+			{ "<A-l>", ":lua require('lsp_lines').toggle()<CR>", "Toggle lsp_lines" },
+		},
+		config = function()
+			require("lsp_lines").setup()
+			require("lsp_lines").toggle()
+		end,
+	},
 }

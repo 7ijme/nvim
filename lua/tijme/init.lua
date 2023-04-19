@@ -1,3 +1,3 @@
 require("tijme.set")
-require("tijme.packer")
+require("tijme.lazy")
 require("tijme.remap")
