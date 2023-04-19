@@ -38,7 +38,12 @@ return {
 	"neoclide/npm.nvim",
 
 	-- color highlighting
-	"gko/vim-coloresque",
+	{
+		"brenoprata10/nvim-highlight-colors",
+		config = function()
+			require("nvim-highlight-colors").turnOn()
+		end,
+	},
 
 	"nvim-tree/nvim-web-devicons",
 
@@ -94,6 +99,10 @@ return {
 
 	"github/copilot.vim",
 
-	"nvim-telescope/telescope-media-files.nvim",
+	"7ijme/telescope-media-files.nvim",
+	"nvim-telescope/telescope-file-browser.nvim",
 	"nvim-lua/popup.nvim",
+
+	"christoomey/vim-tmux-navigator",
+
 }
