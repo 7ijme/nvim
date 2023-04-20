@@ -115,4 +115,6 @@ return {
 			require("lsp_lines").toggle()
 		end,
 	},
+
+	"vimpostor/vim-tpipeline",
 }
