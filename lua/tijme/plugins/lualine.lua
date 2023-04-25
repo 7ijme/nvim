@@ -10,14 +10,17 @@ return {
 				lualine_b = { "branch", "diff", "diagnostics" },
 				lualine_c = { "filename" },
 				lualine_x = {
-					--[[ {
-				require("noice").api.status.command.get,
-				cond = require("noice").api.status.command.has,
-				color = { fg = "#ff9e64" },
-			}, ]]
 					"filetype",
 				},
-				lualine_y = { "location", "progress" },
+				lualine_y = {
+					{
+						require("noice").api.status.command.get_hl,
+						cond = require("noice").api.status.command.has,
+						color = { fg = "#ff9e64" },
+					},
+					"location",
+					"progress",
+				},
 				lualine_z = { "os.date('!%H:%M:%S', os.time()+get_timezone())" },
 			},
 		})
@@ -28,7 +31,7 @@ return {
 			return os.difftime(now + 3600, os.time(os.date("!*t", now)))
 		end
 
-		if _G.Statusline_timer == nil then
+		--[[ if _G.Statusline_timer == nil then
 			_G.Statusline_timer = vim.loop.new_timer()
 		else
 			_G.Statusline_timer:stop()
@@ -39,6 +42,6 @@ return {
 			vim.schedule_wrap(function() -- updater function
 				vim.api.nvim_command("redrawstatus")
 			end)
-		)
+		) ]]
 	end,
 }

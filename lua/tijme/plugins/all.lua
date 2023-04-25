@@ -24,16 +24,22 @@ return {
 	},
 
 	-- Debugging
-	"mfussenegger/nvim-dap",
+	{
+		"mfussenegger/nvim-dap",
+	},
 	{
 		"mfussenegger/nvim-jdtls",
 		module = "jdtls",
 		ft = "java",
 	},
 
-	{ "sbdchd/neoformat", keys = {
-		{ "<C-f>", ":Neoformat<CR> | :update<CR>" },
-	} },
+	{
+		"sbdchd/neoformat",
+		keys = {
+			{ "<C-f>", "<cmd>Neoformat | update<cr>", desc = "Format" },
+			config = function() end,
+		},
+	},
 
 	"neoclide/npm.nvim",
 
@@ -70,14 +76,29 @@ return {
 	"cohama/lexima.vim",
 
 	-- formatter
-	{ "wesleimp/stylua.nvim" },
+	"wesleimp/stylua.nvim",
 
 	-- better commenting
 	{
 		"folke/todo-comments.nvim",
 		dependencies = "nvim-lua/plenary.nvim",
 		config = function()
-			require("todo-comments").setup({})
+			require("todo-comments").setup({
+				keywords = {
+					FIX = {
+						icon = " ", -- icon used for the sign, and in search results
+						color = "error", -- can be a hex color, or a named color (see below)
+						alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
+						-- signs = false, -- configure signs for some keywords individually
+					},
+					TODO = { icon = " ", color = "info" },
+					HACK = { icon = " ", color = "warning" },
+					WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
+					PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+					NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+					TEST = { icon = "", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
+				},
+			})
 		end,
 	},
 
@@ -85,6 +106,19 @@ return {
 	"unblevable/quick-scope",
 
 	-- signatures (for lsp)
+	{
+		"simrat39/rust-tools.nvim",
+		config = function()
+			require("rust-tools").setup()
+			-- excecute when rust file is opened
+			vim.cmd([[
+			  augroup rust_buffer_keymap
+				autocmd!
+				autocmd BufEnter *.rs lua vim.api.nvim_buf_set_keymap(0, 'n', 'K', ':RustHoverActions<CR>', { noremap = true, silent = true })
+			  augroup END
+			]])
+		end,
+	},
 
 	-- comment shortcuts
 	{
@@ -103,12 +137,17 @@ return {
 	"nvim-telescope/telescope-file-browser.nvim",
 	"nvim-lua/popup.nvim",
 
-	"christoomey/vim-tmux-navigator",
+	{
+		"christoomey/vim-tmux-navigator",
+		cond = function()
+			return vim.loop.os_uname().sysname == "Linux"
+		end,
+	},
 
 	{
 		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 		keys = {
-			{ "<A-l>", ":lua require('lsp_lines').toggle()<CR>", "Toggle lsp_lines" },
+			{ "<A-l>", "<cmd>lua require('lsp_lines').toggle()<cr>", "Toggle lsp_lines" },
 		},
 		config = function()
 			require("lsp_lines").setup()

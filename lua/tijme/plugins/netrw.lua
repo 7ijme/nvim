@@ -26,7 +26,7 @@ return {
 				file = "", -- File icon
 			},
 			use_devicons = true, -- Uses nvim-web-devicons if true, otherwise use the file icon specified above
-			mappings = {
+			--[[ mappings = {
 				["R"] = function(payload)
 					print(payload.node)
 					vim.ui.input({
@@ -77,9 +77,9 @@ return {
 							return
 						end
 						vim.cmd("silent !mkdir " .. payload.dir .. "/" .. new_name)
-					end)
+					end) 
 				end,
-			}, -- Custom key mappings
+			},]] -- Custom key mappings
 		})
 
 		--vim.g.netrw_liststyle = 3

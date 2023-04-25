@@ -16,6 +16,7 @@ vim.opt.wrap = false
 --vim.opt.backup = false
 if vim.loop.os_uname().sysname == "Linux" then
 	vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+	vim.opt.shell = "/bin/bash"
 end
 --vim.opt.undofile = true
 
@@ -39,7 +40,7 @@ vim.cmd("autocmd InsertLeave * if &readonly == 0 && filereadable(bufname('%')) |
 vim.cmd("autocmd FileType * set formatoptions-=cro")
 
 -- save file once created
-vim.cmd("autocmd BufNewFile * silent! write")
+-- vim.cmd("autocmd BufNewFile * silent! write")
 
 function MultipleEdit(p_list)
 	for _, p in ipairs(p_list) do
@@ -76,3 +77,12 @@ nnoremap <expr> i IndentWithI()]])
 
 -- set env variable $env:TERM_PROGRAM = "nvim"
 vim.cmd("let $TERM_PROGRAM = 'nvim'")
+
+-- this makes sure that the statusline is not shown twice in tmux
+if os.getenv("TMUX") ~= nil then
+	vim.cmd("au VimEnter * set laststatus=0")
+end
+
+function fix_lualine()
+	vim.cmd("set laststatus=0")
+end

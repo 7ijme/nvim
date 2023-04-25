@@ -44,6 +44,14 @@ return {
 			},
 		})
 
+		lsp.configure("ltex", {
+			settings = {
+				ltex = {
+					language = "auto",
+				},
+			},
+		})
+
 		local cmp = require("cmp")
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 		local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -104,16 +112,6 @@ return {
 
 			--vim.keymap.set("i", "<leader>h", function() vim.lsp.buf.signature_help() end, opts)
 		end)
-
-		--[[vim.diagnostic.config({
-  virtual_text = true,
-  signs = true,
-  update_in_insert = true,
-  underline = true,
-  severity_sort = false,
-  float = true,
-})]]
-		--
 
 		vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 			virtual_text = true,
