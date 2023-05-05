@@ -108,19 +108,19 @@ return {
 	"unblevable/quick-scope",
 
 	-- signatures (for lsp)
-	{
-		"simrat39/rust-tools.nvim",
-		config = function()
-			require("rust-tools").setup()
-			-- excecute when rust file is opened
-			vim.cmd([[
-			  augroup rust_buffer_keymap
-				autocmd!
-				autocmd BufEnter *.rs lua vim.api.nvim_buf_set_keymap(0, 'n', 'K', ':RustHoverActions<CR>', { noremap = true, silent = true })
-			  augroup END
-			]])
-		end,
-	},
+	-- {
+	-- 	"simrat39/rust-tools.nvim",
+	-- 	config = function()
+	-- 		require("rust-tools").setup()
+	-- 		-- excecute when rust file is opened
+	-- 		vim.cmd([[
+	-- 		  augroup rust_buffer_keymap
+	-- 			autocmd!
+	-- 			autocmd BufEnter *.rs lua vim.api.nvim_buf_set_keymap(0, 'n', 'K', ':RustHoverActions<CR>', { noremap = true, silent = true })
+	-- 		  augroup END
+	-- 		]])
+	-- 	end,
+	-- },
 
 	-- comment shortcuts
 	{

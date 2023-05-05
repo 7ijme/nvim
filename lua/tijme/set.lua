@@ -31,7 +31,7 @@ vim.opt.scrolloff = 8
 
 --vim.opt.updatetime = 50
 
-vim.cmd("autocmd InsertLeave * if &readonly == 0 && filereadable(bufname('%')) | write | endif")
+vim.cmd("autocmd InsertLeave * if &readonly == 0 && filereadable(bufname('%')) | silent write | endif")
 
 --vim.cmd("autocmd BufWritePre * undojoin | silent Neoformat")
 -- create keybind to format code
