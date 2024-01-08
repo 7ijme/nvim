@@ -49,7 +49,7 @@ return {
 				["D"] = del,
 				["<del>"] = del,
 
-				["%"] = function(payload)
+--[[ 				["%"] = function(payload)
 					-- create file with input name
 					vim.ui.input({
 						prompt = "Create file in " .. payload.dir .. " with name: ",
@@ -65,7 +65,7 @@ return {
 						vim.cmd("e " .. payload.dir .. "/" .. new_name)
 					end)
 				end,
-				["d"] = function(payload)
+	 ]]			["d"] = function(payload)
 					-- create directory with input name
 					vim.ui.input({
 						prompt = "Create directory in " .. payload.dir .. " with name: ",
