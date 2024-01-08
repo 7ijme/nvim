@@ -78,7 +78,7 @@ return {
 	"wakatime/vim-wakatime",
 
 	-- Auto bracket pairs
-	"cohama/lexima.vim",
+	-- "cohama/lexima.vim",
 
 	-- formatter
 	"wesleimp/stylua.nvim",
