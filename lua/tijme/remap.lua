@@ -12,11 +12,11 @@ vim.keymap.set("n", "<C-Down>", "<C-w>j") ]]
 --[[ vim.keymap.set("n", "<A-h>", "<cmd>vertical resize -1<CR>")
 vim.keymap.set("n", "<A-l>", "<cmd>vertical resize +1<CR>")
 vim.keymap.set("n", "<A-k>", "<cmd>resize -1<CR>")
-vim.keymap.set("n", "<A-j>", "<cmd>resize +1<CR>")
+vim.keymap.set("n", "<A-j>", "<cmd>resize +1<CR>") ]]
 vim.keymap.set("n", "<A-Left>", "<cmd>vertical resize -1<CR>")
 vim.keymap.set("n", "<A-Right>", "<cmd>vertical resize +1<CR>")
 vim.keymap.set("n", "<A-Up>", "<cmd>resize -1<CR>")
-vim.keymap.set("n", "<A-Down>", "<cmd>resize +1<CR>") ]]
+vim.keymap.set("n", "<A-Down>", "<cmd>resize +1<CR>")
 
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
