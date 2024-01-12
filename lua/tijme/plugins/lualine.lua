@@ -28,7 +28,7 @@ return {
 		-- Compute the difference in seconds between local time and UTC.
 		function get_timezone()
 			local now = os.time()
-			return os.difftime(now + 3600, os.time(os.date("!*t", now)))
+			return os.difftime(now, os.time(os.date("!*t", now)))
 		end
 
 		--[[ if _G.Statusline_timer == nil then
