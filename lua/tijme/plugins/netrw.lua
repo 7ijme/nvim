@@ -27,6 +27,9 @@ return {
 			},
 			use_devicons = true, -- Uses nvim-web-devicons if true, otherwise use the file icon specified above
 			mappings = {
+				["<c-l>"] = function ()
+					 vim.cmd("TmuxNavigateRight")
+				end,
 				["R"] = function(payload)
 					print(payload.node)
 					vim.ui.input({
