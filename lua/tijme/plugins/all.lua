@@ -151,12 +151,13 @@ return {
 	{
 		"christoomey/vim-tmux-navigator",
 		cond = function()
-			return vim.loop.os_uname().sysname == "Linux"
+			-- return vim.loop.os_uname().sysname == "Linux"
+			return true
 		end,
 	},
 
 	{
-		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		"ErichDonGubler/lsp_lines.nvim",
 		keys = {
 			{ "<A-l>", "<cmd>lua require('lsp_lines').toggle()<cr>", "Toggle lsp_lines" },
 		},
