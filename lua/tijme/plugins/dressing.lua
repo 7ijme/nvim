@@ -1,5 +1,5 @@
 return {
- "stevearc/dressing.nvim",	config = {
+ "stevearc/dressing.nvim",	opts = {
 		input = {
 		get_config = function(opts)
 			if opts.kind == "netrw" then
