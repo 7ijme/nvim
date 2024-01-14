@@ -168,5 +168,4 @@ return {
 	},
 
 	"vimpostor/vim-tpipeline",
-	"mg979/vim-visual-multi"
 }
