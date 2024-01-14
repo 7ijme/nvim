@@ -27,9 +27,7 @@ return {
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
-			require("gitsigns").setup({
-				current_line_blame = true
-			})
+			require("gitsigns").setup()
 		end,
 	},
 
@@ -170,4 +168,14 @@ return {
 	},
 
 	"vimpostor/vim-tpipeline",
+	{"f-person/git-blame.nvim",
+		keys = {
+			{ "<leader>gb", "<cmd>GitBlameToggle<cr>", desc = "Toggle Git Blame" },
+		},
+		opts = {
+			enabled= false,
+			date_format = "%r, %x (%H:%M)",
+			message_template = "  <author> • <date> • <summary>",
+		}
+	}
 }
