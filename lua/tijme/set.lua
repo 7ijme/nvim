@@ -1,3 +1,4 @@
+vim.opt.laststatus = 3
 --vim.opt.guicursor = ""
 -- on neovim start press j and enter
 vim.opt.nu = true
