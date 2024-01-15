@@ -173,5 +173,7 @@ return {
 			date_format = "%r, %x (%H:%M)",
 			message_template = "  <author> • <date> • <summary>",
 		}
-	}
+	},
+
+	{ 'echasnovski/mini.ai', version = '*', opts = {} }
 }
