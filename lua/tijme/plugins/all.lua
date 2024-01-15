@@ -35,12 +35,7 @@ return {
 	{
 		"mfussenegger/nvim-dap",
 	},
-	{
-		"mfussenegger/nvim-jdtls",
-		module = "jdtls",
-		ft = "java",
-	},
-
+	
 	{
 		"sbdchd/neoformat",
 		keys = {
@@ -168,7 +163,8 @@ return {
 	},
 
 	"vimpostor/vim-tpipeline",
-	{"f-person/git-blame.nvim",
+	{
+		"f-person/git-blame.nvim",
 		keys = {
 			{ "<leader>gb", "<cmd>GitBlameToggle<cr>", desc = "Toggle Git Blame" },
 		},

@@ -4,13 +4,13 @@ return {
 	ft = "java",
 
 	config = function()
-		root_dir = vim.fs.dirname(vim.fs.find({ ".gradlew", ".git", "mvnw", "pom.xml" }, { upward = true })[1])
-		local workspace_folder = "~/.cache/jdtls/workspace/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
+		local root_dir = vim.fs.dirname(vim.fs.find({ ".gradlew", ".git", "mvnw", "pom.xml" }, { upward = true })[1])
+		local workspace_folder = "/home/tijme/.cache/jdtls/workspace/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
 
 		local jdtls = require("jdtls")
 		vim.keymap.set("n", "<C-i>", jdtls.organize_imports)
 
-		require("lspconfig").jdtls.setup({
+		require("jdtls").start_or_attach({
 			cmd = {
 				"java",
 				"-Declipse.application=org.eclipse.jdt.ls.core.id1",
@@ -26,7 +26,7 @@ return {
 				"java.base/java.lang=ALL-UNNAMED",
 				"-jar",
 				vim.fn.glob(
-					"~/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar"
+					"~/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.6.600.v20231106-1826.jar"
 				),
 				"-configuration",
 				vim.fn.glob("~/.local/share/nvim/mason/packages/jdtls/config_linux"),
@@ -34,9 +34,10 @@ return {
 				workspace_folder,
 			},
 			single_file_support = true,
-			root_dir = function()
+			--[[ root_dir = function()
 				return root_dir
-			end,
+			end, ]]
+			root_dir = root_dir,
 			flags = {
 				debounce_text_changes = 150,
 			},
