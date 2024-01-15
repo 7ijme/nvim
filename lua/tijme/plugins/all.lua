@@ -3,22 +3,8 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		dependencies = {
-			"windwp/nvim-ts-autotag"
-		},
-		config = function()
-			require("nvim-treesitter.configs").setup({
-				ensure_installed = { "lua", "vim", "vimdoc", "rust"},
-				sync_install = true,
-				auto_install = true,
-				highlight = {
-					enable = true,
-				},
-				autotag = {
-					enable = true,
-				}
-			})
-		end,
+		dependencies = { "windwp/nvim-ts-autotag" },
+		config = function() require("nvim-treesitter.configs").setup({ ensure_installed = { "lua", "vim", "vimdoc", "rust"}, sync_install = true, auto_install = true, highlight = { enable = true, }, autotag = { enable = true, } }) end,
 	},
 	"nvim-treesitter/nvim-treesitter-context",
 
@@ -127,12 +113,7 @@ return {
 	-- },
 
 	-- comment shortcuts
-	{
-		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup()
-		end,
-	},
+	{ "numToStr/Comment.nvim", opts = {} },
 
 	-- yeah useless fun bullshit
 	"eandrju/cellular-automaton.nvim",
@@ -175,5 +156,11 @@ return {
 		}
 	},
 
-	{ 'echasnovski/mini.ai', version = '*', opts = {} }
+	-- Extend ai motion
+	{ 'echasnovski/mini.ai', version = '*', opts = {} },
+	{ 'echasnovski/mini.starter', version = '*', opts = {} },
+	-- Extend f and t
+	{ 'echasnovski/mini.jump', version = '*', opts = {} },
+	-- Split and join objects
+	{ 'echasnovski/mini.splitjoin', version = '*', opts = {} },
 }
