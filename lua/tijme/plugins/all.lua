@@ -1,11 +1,5 @@
 return {
 	-- Highlighting
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-		dependencies = { "windwp/nvim-ts-autotag" },
-		config = function() require("nvim-treesitter.configs").setup({ ensure_installed = { "lua", "vim", "vimdoc", "rust"}, sync_install = true, auto_install = true, highlight = { enable = true, }, autotag = { enable = true, } }) end,
-	},
 	"nvim-treesitter/nvim-treesitter-context",
 
 	-- Git
@@ -20,14 +14,6 @@ return {
 	-- Debugging
 	{
 		"mfussenegger/nvim-dap",
-	},
-	
-	{
-		"sbdchd/neoformat",
-		keys = {
-			{ "<C-f>", "<cmd>Neoformat | update<cr>", desc = "Format" },
-			config = function() end,
-		},
 	},
 
 	"neoclide/npm.nvim",
@@ -52,10 +38,10 @@ return {
 	-- error tab
 	{
 		"folke/trouble.nvim",
-		dependencies = {"nvim-tree/nvim-web-devicons"},
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("trouble").setup({})
-			vim.keymap.set("n", "<leader>tt", function ()
+			vim.keymap.set("n", "<leader>tt", function()
 				require("trouble").toggle()
 			end)
 		end,
@@ -150,17 +136,17 @@ return {
 			{ "<leader>gb", "<cmd>GitBlameToggle<cr>", desc = "Toggle Git Blame" },
 		},
 		opts = {
-			enabled= false,
+			enabled = false,
 			date_format = "%r, %x (%H:%M)",
 			message_template = "  <author> • <date> • <summary>",
-		}
+		},
 	},
 
 	-- Extend ai motion
-	{ 'echasnovski/mini.ai', version = '*', opts = {} },
-	{ 'echasnovski/mini.starter', version = '*', opts = {} },
+	{ "echasnovski/mini.ai", version = "*", opts = {} },
+	{ "echasnovski/mini.starter", version = "*", opts = {} },
 	-- Extend f and t
-	{ 'echasnovski/mini.jump', version = '*', opts = {} },
+	{ "echasnovski/mini.jump", version = "*", opts = {} },
 	-- Split and join objects
-	{ 'echasnovski/mini.splitjoin', version = '*', opts = {} },
+	{ "echasnovski/mini.splitjoin", version = "*", opts = {} },
 }
