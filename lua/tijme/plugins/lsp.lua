@@ -7,6 +7,7 @@ return {
 		"neovim/nvim-lspconfig", -- Required
 		"williamboman/mason.nvim", -- Optional
 		"williamboman/mason-lspconfig.nvim", -- Optional
+		"numToStr/prettierrc.nvim",
 
 		-- Autocompletion
 		"hrsh7th/nvim-cmp", -- Required
@@ -52,7 +53,6 @@ return {
 			},
 		})
 
-
 		local cmp = require("cmp")
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 		local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -62,8 +62,8 @@ return {
 			["<C-Space>"] = cmp.mapping.complete(),
 		})
 
-		local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-		cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 		cmp_mappings["<Tab>"] = nil
 		cmp_mappings["<S-Tab>"] = nil
