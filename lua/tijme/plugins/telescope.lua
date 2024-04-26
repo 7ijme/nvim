@@ -36,6 +36,11 @@ return {
 					find_cmd = "rg",
 				},
 			},
+			pickers = {
+				find_files = {
+					hidden = true,
+				}
+			}
 		})
 		require("telescope").load_extension("media_files")
 		vim.keymap.set("n", "<leader>pm", require("telescope").extensions.media_files.media_files, {})
