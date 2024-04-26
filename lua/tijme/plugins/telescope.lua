@@ -1,6 +1,6 @@
 return {
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.4",
+		--tag = "0.1.4",
 		-- or                            , branch = '0.1.x',
 		dependencies = {
 			{
@@ -13,7 +13,7 @@ return {
 
 	config = function()
 		local builtin = require("telescope.builtin")
-		vim.keymap.set("n", "<leader>pf", builtin.find_files({hidden=true}), {})
+		vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
 		vim.keymap.set("n", "<leader>pd", builtin.diagnostics, {})
 		vim.keymap.set("n", "<C-p>", builtin.git_files, {})
 		vim.keymap.set("n", "<leader>ps", function()
@@ -36,6 +36,11 @@ return {
 					find_cmd = "rg",
 				},
 			},
+			pickers = {
+				find_files = {
+					hidden = true,
+				},
+			}
 		})
 		require("telescope").load_extension("media_files")
 		vim.keymap.set("n", "<leader>pm", require("telescope").extensions.media_files.media_files, {})
