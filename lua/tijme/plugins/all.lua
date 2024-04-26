@@ -149,5 +149,8 @@ return {
 	{ "echasnovski/mini.jump", version = "*", opts = {} },
 	-- Split and join objects
 	{ "echasnovski/mini.splitjoin", version = "*", opts = {} },
-	"lambdalisue/suda.vim"
+	"lambdalisue/suda.vim",
+
+	-- jupyter notebook
+	--"vim-jukit"
 }
