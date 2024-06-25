@@ -152,5 +152,5 @@ return {
 	"lambdalisue/suda.vim",
 
 	-- jupyter notebook
-	"luk400/vim-jukit"
+	-- "luk400/vim-jukit"
 }
