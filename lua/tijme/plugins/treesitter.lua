@@ -9,6 +9,9 @@ return {
 			auto_install = true,
 			highlight = { enable = true },
 			autotag = { enable = true },
+			ignore_install = { "latex" },
+			disable = { "latex" },
+			additional_vim_regex_highlighting = { "latex", "markdown" },
 		})
 	end,
 }

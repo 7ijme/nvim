@@ -31,7 +31,10 @@ return {
 
 			-- Custom Highlights --
 			colors = {}, -- Override default colors
-			highlights = {}, -- Override highlight groups
+			-- hi Conceal ctermfg=109 guifg=#83a598 ctermbg=NONE guibg=NONE
+			highlights = {
+				Conceal = { fg = "$blue", bg = "NONE" },
+			}, -- Override highlight groups
 
 			-- Plugins Config --
 			diagnostics = {
