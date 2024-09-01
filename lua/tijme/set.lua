@@ -7,7 +7,6 @@ vim.opt.relativenumber = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.conceallevel = 2
 --vim.opt.expandtab = true
 
 vim.opt.smartindent = true
@@ -90,3 +89,6 @@ end
 function fix_lualine()
 	vim.cmd("set laststatus=0")
 end
+
+-- create auto command when .tex file is opened
+vim.cmd("autocmd BufReadPost *.tex set conceallevel=2")

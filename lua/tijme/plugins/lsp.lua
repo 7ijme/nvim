@@ -15,6 +15,7 @@ return {
 		"hrsh7th/cmp-buffer", -- Optional
 		"hrsh7th/cmp-path", -- Optional
 		"saadparwaiz1/cmp_luasnip", -- Optional
+		"evesdropper/luasnip-latex-snippets.nvim",
 		"hrsh7th/cmp-nvim-lua", -- Optional
 
 		-- Snippets
