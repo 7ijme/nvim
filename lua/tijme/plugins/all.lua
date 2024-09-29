@@ -153,4 +153,14 @@ return {
 
 	-- jupyter notebook
 	-- "luk400/vim-jukit"
+	{
+		"kaarmu/typst.vim",
+		dependencies = {
+			"MrPicklePinosaur/typst-conceal.vim",
+		},
+		ft = "typst",
+		lazy = false,
+	},
+	-- "sirver/ultisnips",
+	-- { "ckunte/typst-snippets-vim", version = "*" },
 }
