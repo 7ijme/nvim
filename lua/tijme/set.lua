@@ -92,3 +92,4 @@ end
 
 -- create auto command when .tex file is opened
 vim.cmd("autocmd BufReadPost *.tex set conceallevel=2")
+vim.cmd("autocmd BufReadPost *.typ set conceallevel=2")
