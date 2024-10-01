@@ -29,18 +29,20 @@ return {
 				capabilities = require("cmp_nvim_lsp").default_capabilities(),
 			})
 
-			lsp_zero.extend_lspconfig({
-				sign_text = true,
-				lsp_attach = lsp_attach,
-				capabilities = require("cmp_nvim_lsp").default_capabilities(),
-			})
-
 			require("mason").setup({})
 			require("mason-lspconfig").setup({
 				handlers = {
 					function(server_name)
 						require("lspconfig")[server_name].setup({})
 					end,
+				},
+			})
+
+			require("lspconfig").typst_lsp.setup({
+				single_file_support = true,
+				settings = {
+					exportPdf = "onType", -- Choose onType, onSave or never.
+					-- serverPath = "" -- Normally, there is no need to uncomment it.
 				},
 			})
 
