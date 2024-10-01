@@ -46,6 +46,16 @@ return {
 				},
 			})
 
+			require("lspconfig").lua_ls.setup({
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { "vim" },
+						},
+					},
+				},
+			})
+
 			local cmp = require("cmp")
 			local cmp_action = require("lsp-zero").cmp_action()
 
@@ -56,7 +66,7 @@ return {
 				},
 				completion = {
 					completeopt = "menu,menuone,noinsert",
-					autocomplete = false,
+					-- autocomplete = false,
 				},
 				mapping = cmp.mapping.preset.insert({
 					-- Navigate between completion items
