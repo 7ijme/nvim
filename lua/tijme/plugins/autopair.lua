@@ -20,5 +20,9 @@ return {
 				highlight_grey='Comment'
 			},
 		})
+
+		local Rule = require('nvim-autopairs.rule')
+		npairs.add_rule(Rule("$$","$$","tex"))
+		npairs.add_rule(Rule("$","$","typst"))
 	end
 }
