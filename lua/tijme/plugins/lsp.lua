@@ -20,7 +20,7 @@ return {
 				vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
 				vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
 				vim.keymap.set({ "n", "x" }, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
-				vim.keymap.set("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+				vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 			end
 
 			lsp_zero.extend_lspconfig({
@@ -38,13 +38,31 @@ return {
 				},
 			})
 
-			require("lspconfig").typst_lsp.setup({
+			local nvim_lsp = require("lspconfig")
+			nvim_lsp.denols.setup({
+				root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+			})
+
+			nvim_lsp.ts_ls.setup({
+				root_dir = nvim_lsp.util.root_pattern("package.json"),
+				single_file_support = false,
+			})
+
+			nvim_lsp.typst_lsp.setup({
+				-- offset_encoding = "utf-8",
 				single_file_support = true,
 				settings = {
 					exportPdf = "onType", -- Choose onType, onSave or never.
 					-- serverPath = "" -- Normally, there is no need to uncomment it.
 				},
 			})
+
+			-- require("lspconfig").tinymist.setup({
+			-- 	offset_encoding = "utf-8",
+			-- 	settings = {
+			-- 		exportPdf = "onType",
+			-- 	},
+			-- })
 
 			require("lspconfig").lua_ls.setup({
 				settings = {
@@ -92,6 +110,10 @@ return {
 						vim.snippet.expand(args.body)
 					end,
 				},
+			})
+
+			vim.filetype.add({
+				pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 			})
 		end,
 	},

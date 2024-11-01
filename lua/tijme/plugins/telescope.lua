@@ -19,6 +19,7 @@ return {
 		vim.keymap.set("n", "<leader>ps", function()
 			builtin.grep_string({ search = vim.fn.input("Grep > ") })
 		end)
+		vim.keymap.set('n', '<leader>pS', builtin.live_grep, { desc = 'Telescope live grep' })
 		vim.keymap.set("n", "<leader>pt", function()
 			vim.cmd("TodoTelescope")
 		end, {})
@@ -31,7 +32,7 @@ return {
 				media_files = {
 					-- filetypes whitelist
 					-- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
-					filetypes = { "png", "webp", "jpg", "jpeg" },
+					filetypes = { "png", "webp", "jpg", "jpeg", "mp4", "ttf", "webm", "pdf" },
 					-- find command (defaults to `fd`)
 					find_cmd = "rg",
 				},

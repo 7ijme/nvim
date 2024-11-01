@@ -37,6 +37,11 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
+-- nnoremap <leader>o :call append(line('.'), '')<CR>
+-- nnoremap <leader>O :call append(line('.') - 1, '')<CR>
+vim.keymap.set("n", "<leader>o", ":call append(line('.'), '')<CR>")
+vim.keymap.set("n", "<leader>O", ":call append(line('.') - 1, '')<CR>")
+
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
@@ -45,6 +50,7 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>S", [[/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left><CR>]])
 
 vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
 

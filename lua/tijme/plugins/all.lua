@@ -144,7 +144,7 @@ return {
 
 	-- Extend ai motion
 	{ "echasnovski/mini.ai", version = "*", opts = {} },
-	{ "echasnovski/mini.starter", version = "*", opts = {} },
+	-- { "echasnovski/mini.starter", version = "*", opts = {} },
 	-- Extend f and t
 	{ "echasnovski/mini.jump", version = "*", opts = {} },
 	-- Split and join objects
