@@ -163,4 +163,7 @@ return {
 	},
 	-- "sirver/ultisnips",
 	-- { "ckunte/typst-snippets-vim", version = "*" },
+
+	-- discord rich presence
+	{ "andweeb/presence.nvim", conf = {} },
 }

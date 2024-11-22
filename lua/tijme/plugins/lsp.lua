@@ -48,21 +48,23 @@ return {
 				single_file_support = false,
 			})
 
-			nvim_lsp.typst_lsp.setup({
-				-- offset_encoding = "utf-8",
-				single_file_support = true,
-				settings = {
-					exportPdf = "onType", -- Choose onType, onSave or never.
-					-- serverPath = "" -- Normally, there is no need to uncomment it.
-				},
-			})
-
-			-- require("lspconfig").tinymist.setup({
-			-- 	offset_encoding = "utf-8",
+			-- nvim_lsp.typst_lsp.setup({
+			-- 	-- offset_encoding = "utf-8",
+			-- 	single_file_support = true,
 			-- 	settings = {
-			-- 		exportPdf = "onType",
+			-- 		exportPdf = "onType", -- Choose onType, onSave or never.
+			-- 		-- serverPath = "" -- Normally, there is no need to uncomment it.
 			-- 	},
 			-- })
+
+			require("lspconfig").tinymist.setup({
+				offset_encoding = "utf-8",
+				single_file_support = true,
+				settings = {
+					exportPdf = "onSave",
+					formatterMode = "typstyle"
+				},
+			})
 
 			require("lspconfig").lua_ls.setup({
 				settings = {

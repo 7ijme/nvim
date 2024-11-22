@@ -28,6 +28,7 @@ return {
 					yaml = { "prettierd", "prettier", stop_after_first = true },
 					toml = { "prettierd", "prettier", stop_after_first = true },
 					markdown = { "prettierd", "prettier", stop_after_first = true },
+					typst = { "typstyle" },
 				},
 			})
 
