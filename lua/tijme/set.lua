@@ -34,7 +34,20 @@ vim.opt.scrolloff = 8
 
 -- vim.cmd("autocmd InsertLeave * if &readonly == 0 && filereadable(bufname('%')) | silent write | endif")
 -- do the same thing as above, but exclude .tex files
-vim.cmd("autocmd InsertLeave * if &readonly == 0 && filereadable(bufname('%')) && &filetype != 'tex' | silent write | endif")
+
+-- makes it slow!!
+-- vim.cmd("autocmd InsertLeave * if &readonly == 0 && filereadable(bufname('%')) && &filetype != 'tex' && &filetype != 'typst'  | silent write | endif")
+
+-- vim.api.nvim_create_autocmd("InsertLeave", {
+--   callback = function()
+--     if vim.bo.modified then
+--       vim.defer_fn(function()
+--         vim.cmd("silent! write")
+--       end, 10) -- Delay by 10ms for a non-blocking save
+--     end
+--   end,
+-- })
+--
 
 --vim.cmd("autocmd BufWritePre * undojoin | silent Neoformat")
 -- create keybind to format code
