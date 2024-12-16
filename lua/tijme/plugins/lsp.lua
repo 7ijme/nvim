@@ -106,6 +106,7 @@ return {
 					-- Scroll up and down in the completion documentation
 					["<C-u>"] = cmp.mapping.scroll_docs(-4),
 					["<C-d>"] = cmp.mapping.scroll_docs(4),
+					["<C-e>"] = cmp.mapping.close(),
 				}),
 				snippet = {
 					expand = function(args)
