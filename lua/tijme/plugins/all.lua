@@ -179,4 +179,6 @@ return {
 	-- 	end,
 	-- },
 	"LZDQ/nvim-autocenter",
+
+	{ "niuiic/typst-preview.nvim", dependencies = { "niuiic/core.nvim" } },
 }

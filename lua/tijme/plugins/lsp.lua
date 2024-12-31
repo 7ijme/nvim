@@ -1,6 +1,9 @@
 return {
 	{
 		"VonHeikemen/lsp-zero.nvim",
+		dependencies = {
+			"mihyaeru21/nvim-ruby-lsp",
+		},
 		branch = "v4.x",
 		config = function()
 			local lsp_zero = require("lsp-zero")
@@ -45,7 +48,7 @@ return {
 
 			nvim_lsp.ts_ls.setup({
 				root_dir = nvim_lsp.util.root_pattern("package.json"),
-				single_file_support = false,
+				single_file_support = true,
 			})
 
 			-- nvim_lsp.typst_lsp.setup({
