@@ -18,7 +18,6 @@ vim.keymap.set("n", "<A-Right>", "<cmd>vertical resize +1<CR>")
 vim.keymap.set("n", "<A-Up>", "<cmd>resize -1<CR>")
 vim.keymap.set("n", "<A-Down>", "<cmd>resize +1<CR>")
 
-
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
@@ -55,3 +54,15 @@ vim.keymap.set("n", "<leader>S", [[/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Lef
 vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
 
 vim.keymap.set("n", "<C-B>", "<C-V>")
+
+vim.keymap.set("n", "<leader>ts", function()
+	require("typst-concealer").enable_buf(vim.fn.bufnr())
+end)
+vim.keymap.set("n", "<leader>tt", function()
+	local tc = require("typst-concealer")
+	if tc._enabled_buffers[1] then
+		tc.disable_buf(vim.fn.bufnr())
+	else
+		tc.enable_buf(vim.fn.bufnr())
+	end
+end)

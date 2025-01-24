@@ -46,10 +46,10 @@ return {
 				root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
 			})
 
-			nvim_lsp.ts_ls.setup({
+			--[[ nvim_lsp.ts_ls.setup({
 				root_dir = nvim_lsp.util.root_pattern("package.json"),
 				single_file_support = true,
-			})
+			}) ]]
 
 			-- nvim_lsp.typst_lsp.setup({
 			-- 	-- offset_encoding = "utf-8",

@@ -155,11 +155,15 @@ return {
 	-- "luk400/vim-jukit"
 	{
 		"kaarmu/typst.vim",
-		dependencies = {
-			"MrPicklePinosaur/typst-conceal.vim",
-		},
 		ft = "typst",
 		lazy = false,
+	},
+	{
+		"PartyWumpus/typst-concealer",
+		config = function()
+			require("typst-concealer").setup({})
+		end,
+		event = "VeryLazy",
 	},
 	-- "sirver/ultisnips",
 	-- { "ckunte/typst-snippets-vim", version = "*" },
@@ -181,4 +185,21 @@ return {
 	"LZDQ/nvim-autocenter",
 
 	{ "niuiic/typst-preview.nvim", dependencies = { "niuiic/core.nvim" } },
+
+	{
+		"azratul/live-share.nvim",
+		dependencies = {
+			"jbyuki/instant.nvim",
+		},
+		config = function()
+			vim.g.instant_username = "Tijme"
+			require("live-share").setup({
+				port_internal = 8765,
+				max_attempts = 40, -- 10 seconds
+				service = "serveo.net",
+			})
+		end,
+	},
+
+	{ "edluffy/hologram.nvim", conf = { auto_display = true } },
 }
