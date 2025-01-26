@@ -99,7 +99,7 @@ return {
 	-- },
 
 	-- comment shortcuts
-	{ "numToStr/Comment.nvim", opts = {} },
+	{ "numToStr/Comment.nvim",      opts = {} },
 
 	-- yeah useless fun bullshit
 	"eandrju/cellular-automaton.nvim",
@@ -143,10 +143,10 @@ return {
 	},
 
 	-- Extend ai motion
-	{ "echasnovski/mini.ai", version = "*", opts = {} },
+	{ "echasnovski/mini.ai",        version = "*", opts = {} },
 	-- { "echasnovski/mini.starter", version = "*", opts = {} },
 	-- Extend f and t
-	{ "echasnovski/mini.jump", version = "*", opts = {} },
+	{ "echasnovski/mini.jump",      version = "*", opts = {} },
 	-- Split and join objects
 	{ "echasnovski/mini.splitjoin", version = "*", opts = {} },
 	"lambdalisue/suda.vim",
@@ -161,7 +161,9 @@ return {
 	{
 		"PartyWumpus/typst-concealer",
 		config = function()
-			require("typst-concealer").setup({})
+			require("typst-concealer").setup {
+				do_diagnostics = false,
+			}
 		end,
 		event = "VeryLazy",
 	},
@@ -169,7 +171,7 @@ return {
 	-- { "ckunte/typst-snippets-vim", version = "*" },
 
 	-- discord rich presence
-	{ "andweeb/presence.nvim", conf = {} },
+	{ "andweeb/presence.nvim",     conf = {} },
 	-- {
 	-- 	"Pocco81/auto-save.nvim",
 	-- 	config = function()
@@ -202,4 +204,16 @@ return {
 	},
 
 	{ "edluffy/hologram.nvim", conf = { auto_display = true } },
+
+	{
+		"folke/lazydev.nvim",
+		ft = "lua", -- only load on lua files
+		opts = {
+			library = {
+				-- See the configuration section for more details
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = "luvit-meta/library", words = { "vim%.uv" } },
+			},
+		},
+	},
 }
