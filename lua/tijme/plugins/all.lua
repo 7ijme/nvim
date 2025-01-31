@@ -163,6 +163,7 @@ return {
 		config = function()
 			require("typst-concealer").setup {
 				do_diagnostics = false,
+				enabled_by_default = false
 			}
 		end,
 		event = "VeryLazy",
@@ -171,7 +172,7 @@ return {
 	-- { "ckunte/typst-snippets-vim", version = "*" },
 
 	-- discord rich presence
-	{ "andweeb/presence.nvim",     conf = {} },
+	{ "andweeb/presence.nvim", conf = {} },
 	-- {
 	-- 	"Pocco81/auto-save.nvim",
 	-- 	config = function()
@@ -186,7 +187,14 @@ return {
 	-- },
 	"LZDQ/nvim-autocenter",
 
-	{ "niuiic/typst-preview.nvim", dependencies = { "niuiic/core.nvim" } },
+	{
+		"niuiic/typst-preview.nvim",
+		dependencies = { "niuiic/core.nvim" },
+		config = function()
+			vim.keymap.set("n", "<leader>tp", "<cmd>lua require('typst-preview').preview()<cr>",
+				{ noremap = true, silent = true })
+		end
+	},
 
 	{
 		"azratul/live-share.nvim",
