@@ -39,6 +39,8 @@ return {
 						require("lspconfig")[server_name].setup({})
 					end,
 				},
+				ensure_installed = { "tinymist", "denols", "emmet_ls", "lua_ls" },
+				automatic_installation = true,
 			})
 
 			local nvim_lsp = require("lspconfig")
@@ -66,16 +68,6 @@ return {
 				settings = {
 					exportPdf = "onType",
 					-- formatterMode = "typstyle"
-				},
-			})
-
-			require("lspconfig").lua_ls.setup({
-				settings = {
-					Lua = {
-						diagnostics = {
-							globals = { "vim" },
-						},
-					},
 				},
 			})
 
