@@ -29,6 +29,8 @@ return {
 					toml = { "prettierd", "prettier", stop_after_first = true },
 					markdown = { "prettierd", "prettier", stop_after_first = true },
 					typst = { "typstyle" },
+					bib = { "bibtex-tidy" },
+					ruby = { "rubyfmt" },
 				},
 			})
 
@@ -41,9 +43,11 @@ return {
 						["end"] = { args.line2, end_line:len() },
 					}
 				end
-				require("conform").format({ async = true, lsp_format = "fallback", range = range }--[[, function()
+				require("conform").format(
+					{ async = true, lsp_format = "fallback", range = range } --[[, function()
 					vim.cmd("update")
-				end ]])
+				end ]]
+				)
 			end, { range = true })
 			-- set keybind <C-f> to format the file
 

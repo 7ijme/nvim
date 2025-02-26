@@ -63,10 +63,10 @@ return {
 			-- })
 
 			require("lspconfig").tinymist.setup({
-				offset_encoding = "utf-8",
+				-- offset_encoding = "utf-8",
 				single_file_support = true,
 				settings = {
-					exportPdf = "onType",
+					exportPdf = "never",
 					-- formatterMode = "typstyle"
 				},
 			})

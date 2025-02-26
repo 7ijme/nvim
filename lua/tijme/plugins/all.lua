@@ -99,7 +99,7 @@ return {
 	-- },
 
 	-- comment shortcuts
-	{ "numToStr/Comment.nvim",      opts = {} },
+	{ "numToStr/Comment.nvim", opts = {} },
 
 	-- yeah useless fun bullshit
 	"eandrju/cellular-automaton.nvim",
@@ -133,7 +133,7 @@ return {
 	{
 		"f-person/git-blame.nvim",
 		keys = {
-			{ "<leader>gb", "<cmd>GitBlameToggle<cr>", desc = "Toggle Git Blame" },
+			{ "<leader>gB", "<cmd>GitBlameToggle<cr>", desc = "Toggle Git Blame" },
 		},
 		opts = {
 			enabled = false,
@@ -143,10 +143,10 @@ return {
 	},
 
 	-- Extend ai motion
-	{ "echasnovski/mini.ai",        version = "*", opts = {} },
+	{ "echasnovski/mini.ai", version = "*", opts = {} },
 	-- { "echasnovski/mini.starter", version = "*", opts = {} },
 	-- Extend f and t
-	{ "echasnovski/mini.jump",      version = "*", opts = {} },
+	{ "echasnovski/mini.jump", version = "*", opts = {} },
 	-- Split and join objects
 	{ "echasnovski/mini.splitjoin", version = "*", opts = {} },
 	"lambdalisue/suda.vim",
@@ -161,10 +161,12 @@ return {
 	{
 		"PartyWumpus/typst-concealer",
 		config = function()
-			require("typst-concealer").setup {
+			require("typst-concealer").setup({
 				do_diagnostics = false,
-				enabled_by_default = false
-			}
+				enabled_by_default = false,
+				conceal_in_normal = false,
+				ppi = 400,
+			})
 		end,
 		event = "VeryLazy",
 	},
@@ -187,13 +189,21 @@ return {
 	-- },
 	"LZDQ/nvim-autocenter",
 
+	-- {
+	-- 	"niuiic/typst-preview.nvim",
+	-- 	dependencies = { "niuiic/core.nvim" },
+	-- 	config = function()
+	-- 		vim.keymap.set("n", "<leader>tp", "<cmd>lua require('typst-preview').preview()<cr>",
+	-- 			{ noremap = true, silent = true })
+	-- 	end
+	-- },
 	{
-		"niuiic/typst-preview.nvim",
-		dependencies = { "niuiic/core.nvim" },
+		"chomosuke/typst-preview.nvim",
+		lazy = false, -- or ft = 'typst'
+		version = "1.*",
 		config = function()
-			vim.keymap.set("n", "<leader>tp", "<cmd>lua require('typst-preview').preview()<cr>",
-				{ noremap = true, silent = true })
-		end
+			vim.keymap.set("n", "<leader>tp", "<cmd>TypstPreview<cr>", { noremap = true, silent = true })
+		end,
 	},
 
 	{
@@ -224,4 +234,64 @@ return {
 			},
 		},
 	},
+
+	{
+		"gsuuon/note.nvim",
+		opts = {
+			-- opts.spaces are note workspace parent directories.
+			-- These directories contain a `notes` directory which will be created if missing.
+			-- `<space path>/notes` acts as the note root, so for space '~' the note root is `~/notes`.
+			-- Defaults to { '~' }.
+			spaces = {
+				"~",
+				-- '~/projects/foo'
+			},
+
+			-- Set keymap = false to disable keymapping
+			-- keymap = {
+			--   prefix = '<leader>n'
+			-- }
+		},
+		cmd = "Note",
+		ft = "note",
+		keys = {
+			-- You can use telescope to search the current note space:
+			{
+				"<leader>tn", -- [t]elescope [n]ote
+				function()
+					require("telescope.builtin").live_grep({
+						cwd = require("note.api").current_note_root(),
+					})
+				end,
+				mode = "n",
+			},
+			{
+				"<M-n>",
+				function()
+					vim.cmd("Note")
+				end,
+				mode = "n",
+			},
+		},
+	},
+
+	-- install without yarn or npm
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		ft = { "markdown" },
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	},
+
+	{
+		"stsewd/fzf-checkout.vim",
+		dependencies = { "junegunn/fzf" },
+		config = function()
+			vim.keymap.set("n", "<leader>gb", "<cmd>GBranches<cr>", { noremap = true, silent = true })
+		end,
+	},
+
+	"subnut/nvim-ghost.nvim",
 }
