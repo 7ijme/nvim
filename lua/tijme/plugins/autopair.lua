@@ -35,32 +35,26 @@ return {
 				end):replace_map_cr(function()
 					return "<C-o>x<CR><CR>$<C-o>k<tab>"
 				end),
-			})
-
-			npairs.add_rules({
 				Rule("$", "$", "typst"):replace_endpair(function(opts)
-					if opts.next_char == "$" then
-						return "  <C-o>h"
-					end
-					return " "
+				  if opts.next_char == "$" then
+					return "  <C-o>h"
+				  end
+				  return " "
 				end):use_key("<space>"),
-			})
-
-			npairs.add_rules({
 				Rule("$ ", " $", "typst")
-					:with_del(function()
-						return false
-					end)
-					:replace_endpair(function(opts)
-						if opts.next_char == " $" then
-							return "<BS><C-o>x"
-						end
-						return " "
-					end)
-					:replace_map_cr(function()
-						return "<C-o>x<CR><CR><C-o>k<tab>"
-					end)
-					:use_key("<space>"),
+				:with_del(function()
+				  return false
+				end)
+				:replace_endpair(function(opts)
+				  if opts.next_char == " $" then
+					return "<BS><C-o>x"
+				  end
+				  return " "
+				end)
+				:replace_map_cr(function()
+				  return "<C-o>x<CR><CR><C-o>k<tab>"
+				end)
+				:use_key("<space>"),
 			})
 		end,
 	},
