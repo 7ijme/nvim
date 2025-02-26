@@ -2,11 +2,11 @@ return {
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
-		opts = {}, -- this is equalent to setup({}) function
 		config = function()
 			local npairs = require("nvim-autopairs")
 
 			npairs.setup({
+				check_ts = true,
 				fast_wrap = {
 					map = "<M-e>",
 					chars = { "{", "[", "(", '"', "'" },
@@ -24,27 +24,44 @@ return {
 
 			local Rule = require("nvim-autopairs.rule")
 			npairs.add_rule(Rule("$$", "$$", "tex"))
-			npairs.remove_rule(Rule("$", "$", "typst"))
-			npairs.add_rule(Rule("$", "$", "typst"))
+			-- npairs.remove_rule(Rule("$", "$", "typst"))
+			-- npairs.add_rule(Rule("$", "$", "typst"))
+			--
 
-			for _, punct in pairs({ "$" }) do
-				require("nvim-autopairs").add_rules({
-					require("nvim-autopairs.rule")("", punct)
-						:with_move(function(opts)
-							return opts.char == punct
-						end)
-						:with_pair(function()
-							return false
-						end)
-						:with_del(function()
-							return false
-						end)
-						:with_cr(function()
-							return false
-						end)
-						:use_key(punct),
-				})
-			end
+			-- Voeg $-autopair toe voor Typst
+			npairs.add_rules({
+				Rule("$", "$", "typst"):with_cr(function()
+					return true
+				end):replace_map_cr(function()
+					return "<C-o>x<CR><CR>$<C-o>k<tab>"
+				end),
+			})
+
+			npairs.add_rules({
+				Rule("$", "$", "typst"):replace_endpair(function(opts)
+					if opts.next_char == "$" then
+						return "  <C-o>h"
+					end
+					return " "
+				end):use_key("<space>"),
+			})
+
+			npairs.add_rules({
+				Rule("$ ", " $", "typst")
+					:with_del(function()
+						return false
+					end)
+					:replace_endpair(function(opts)
+						if opts.next_char == " $" then
+							return "<BS><C-o>x"
+						end
+						return " "
+					end)
+					:replace_map_cr(function()
+						return "<C-o>x<CR><CR><C-o>k<tab>"
+					end)
+					:use_key("<space>"),
+			})
 		end,
 	},
 	{
