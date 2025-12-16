@@ -200,8 +200,16 @@ return {
 	{
 		"chomosuke/typst-preview.nvim",
 		lazy = false, -- or ft = 'typst'
-		version = "1.*",
+		-- version = "1.*",
 		config = function()
+			require("typst-preview").setup({
+				-- open_cmd = "qutebrowser %s"
+				-- open_cmd = "qutebrowser %s & sleep 1 && hyprctl dispatch resizewindowpixel \"150 0, class:^(org.qutebrowser.qutebrowser)$\"",
+				open_cmd = 'bash -c \'qutebrowser --target=window %s & pid=$!; sleep 2 && hyprctl dispatch resizewindowpixel "150 0, class:^(org.qutebrowser.qutebrowser)$"; trap "kill $pid" EXIT; wait\'',
+				dependencies_bin = {
+					["tinymist"] = "/home/tijme/.local/share/nvim/mason/bin/tinymist",
+				},
+			})
 			vim.keymap.set("n", "<leader>tp", "<cmd>TypstPreview<cr>", { noremap = true, silent = true })
 		end,
 	},
@@ -257,7 +265,7 @@ return {
 		keys = {
 			-- You can use telescope to search the current note space:
 			{
-				"<leader>tn", -- [t]elescope [n]ote
+				"<leader>pn", -- [t]elescope [n]ote
 				function()
 					require("telescope.builtin").live_grep({
 						cwd = require("note.api").current_note_root(),
