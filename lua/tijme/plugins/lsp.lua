@@ -1,6 +1,6 @@
 return {
 	{
-		"VonHeikemen/lsp-zero.nvim",
+		"neovim/nvim-lspconfig",
 		dependencies = {
 			"mihyaeru21/nvim-ruby-lsp",
 			"sigmasd/deno-nvim",
@@ -11,10 +11,7 @@ return {
 				config = true,
 			},
 		},
-		branch = "v4.x",
 		config = function()
-			local lsp_zero = require("lsp-zero")
-
 			-- lsp_attach is where you enable features that only work
 			-- if there is a language server active in the file
 
@@ -33,18 +30,6 @@ return {
 				vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 			end
 
-			lsp_zero.extend_lspconfig({
-				sign_text = true,
-				lsp_attach = lsp_attach,
-				capabilities = require("cmp_nvim_lsp").default_capabilities(),
-			})
-
-			--[[ local config = {
-				cmd = { "/path/to/jdt-language-server/bin/jdtls" },
-				root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
-			}
-			require("jdtls").start_or_attach(config) ]]
-
 			require("mason").setup({})
 			require("mason-lspconfig").setup({
 				handlers = {
@@ -56,36 +41,55 @@ return {
 				automatic_installation = true,
 			})
 
-			local nvim_lsp = require("lspconfig")
-			nvim_lsp.denols.setup({
-				root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+			vim.lsp.config("emmet_ls", {
+				cmd = { "emmet-ls", "--stdio" },
+				filetypes = { "html", "css", "javascriptreact", "typescriptreact", "vue", "svelte" },
 			})
 
-			--[[ nvim_lsp.ts_ls.setup({
-				root_dir = nvim_lsp.util.root_pattern("package.json"),
-				single_file_support = true,
-			}) ]]
-
-			-- nvim_lsp.typst_lsp.setup({
-			-- 	-- offset_encoding = "utf-8",
-			-- 	single_file_support = true,
-			-- 	settings = {
-			-- 		exportPdf = "onType", -- Choose onType, onSave or never.
-			-- 		-- serverPath = "" -- Normally, there is no need to uncomment it.
-			-- 	},
-			-- })
-
-			require("lspconfig").tinymist.setup({
-				-- offset_encoding = "utf-8",
-				single_file_support = true,
+			vim.lsp.config("denols", {
+				cmd = { "deno", "lsp" },
+				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json" },
+				root_markers = { "deno.json", "deno.jsonc" },
 				settings = {
-					exportPdf = "never",
-					-- formatterMode = "typstyle"
+					deno = {
+						lint = true,
+						unstable = false,
+					},
 				},
+				on_attach = lsp_attach,
+			})
+
+			vim.lsp.config("lua_ls", {
+				cmd = { "lua-language-server" },
+				filetypes = { "lua" },
+				root_markers = { ".luarc.json", ".luarc.jsonc", "stylua.toml", ".git" },
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { "vim" },
+						},
+					},
+				},
+				on_attach = lsp_attach,
+			})
+			vim.lsp.config("rust_analyzer", {
+				cmd = { "rust-analyzer" },
+				filetypes = { "rust" },
+				root_markers = { "Cargo.toml" },
+				on_attach = lsp_attach,
+			})
+
+			vim.lsp.config("tinymist", {
+				cmd = { "tinymist" },
+				filetypes = { "typst" },
+				root_markers = { ".git", "main.typ" },
+				settings = {
+					exportPdf = "never", -- Choose onType, onSave or never.
+				},
+				on_attach = lsp_attach,
 			})
 
 			local cmp = require("cmp")
-			local cmp_action = require("lsp-zero").cmp_action()
 
 			cmp.setup({
 				preselect = cmp.PreselectMode.Item, -- Automatically preselect the first item.
@@ -130,7 +134,6 @@ return {
 	},
 	{ "williamboman/mason.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
-	{ "neovim/nvim-lspconfig" },
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "hrsh7th/nvim-cmp" },
 }
